@@ -1,7 +1,5 @@
-Metrics: {
-  'accuracy': 0.9814, 
+Metrics: {'accuracy': 0.9814, 
   'f1_score': 0.9813980646546466, 
   'precision': 0.9816004228319656, 
   'recall': 0.9814, 
-  'confusion_matrix': [[2479, 21], [72, 2428]]
-}
+  'confusion_matrix': [[2479, 21], [72, 2428]]}
