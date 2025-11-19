@@ -7,4 +7,6 @@ datasets/
 *.h5
 
 # notebooks checkpoints
-.ipynb_checkpoints/
+.ipynb_checkpoints/venv2/
+__pycache__/
+*.pyc
