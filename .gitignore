@@ -1,0 +1,10 @@
+# datasets
+data/
+datasets/
+
+# model checkpoints
+*.pth
+*.h5
+
+# notebooks checkpoints
+.ipynb_checkpoints/
