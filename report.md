@@ -2,21 +2,25 @@
 ## Team 12– Tejas(2025CSZ0008) & Divya(2025AIZ0019)
 # 1. Introduction
 
-This project evaluates the **cross-dataset generalization** of two independently trained CNN models.  
-Each team member trained a model on their **own dataset** and then tested the model from the other teammate.
- 
-The objectives of the project are:
+This project investigates the cross-dataset generalization of two independently trained convolutional neural network (CNN) models. Each team member trained a model on their respective dataset, and we subsequently tested each model on the other member's dataset to evaluate robustness.
 
-1. To analyze how CNN models trained on different datasets perform when applied to unseen data from another user.  
-2. To compare the generalization capability of Model V1  and Model V2 .  
-3. To learn and demonstrate proper GitHub collaboration workflow including:
-   - Forking & cloning  
-   - Branching  
-   - Pull Requests  
-   - Issues  
-   - Merge workflow  
+The main objectives are:
 
-Both models are implemented using **ResNet-18 (Transfer Learning)** but trained on different datasets, with different augmentations and slightly different fine-tuning approaches.
+To analyze how CNN models trained on different datasets perform on unseen data.
+
+To compare the generalization performance of Model V1 and Model V2.
+
+To demonstrate proper GitHub collaboration workflow, including:
+
+Forking and cloning repositories
+
+Branching strategies
+
+Pull requests and code merging
+
+Issue tracking
+
+Both models use ResNet-18 with transfer learning, but are trained on different datasets, with slight variations in augmentation and fine-tuning strategies.
 
 # 2. Dataset 
 
@@ -36,61 +40,55 @@ Both datasets have the **same number of classes**, but:
 
 
 # 3. Model Architectures
-Model V1 :
+Model V1
 
-A transfer-learning ResNet-18 model:
+Backbone: ResNet-18 pretrained on ImageNet
 
-self.base = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
+Modification: Final fully connected layer replaced for binary classification
 
-self.base.fc = nn.Linear(in_features, num_classes=2)
+Training Characteristics:
 
-**Characteristics:**
-
-Pretrained on ImageNet
-
-Fully connected layer replaced
-
-Mild augmentations
+Mild data augmentations
 
 Optimizer: Adam
 
 Loss: CrossEntropyLoss
 
-Model V2 :
+Model V2
 
-model = models.resnet18(pretrained=True)
+Backbone: ResNet-18 pretrained on ImageNet
 
-model.fc = nn.Linear(model.fc.in_features, num_classes=2)
+Modification: Final fully connected layer replaced for binary classification
 
-**Characteristics:**
-Similar backbone (ResNet-18)
+Training Characteristics:
 
-Trained on a different dataset
+Slightly different augmentation strategy
 
-Slightly different training dynamics
+Fine-tuning dynamics vary
 
-Fine-tuning strategy varies
+Trained on a distinct dataset
 
+Both models rely on transfer learning, but subtle differences in dataset diversity and training approach may impact generalization
 # 4. Experimental Results
 
 4.1 Self-Evaluation Metrics
 
-Model V1 on dataset_1
+Model V2 on dataset_2
 
 Metric	       Score
 
-Accuracy	 = 0.9777
+Accuracy	 = 0.9814
 
-Precision	=  0.9780
+Precision	=  0.9816
 
-Recall	  =  0.9777
+Recall	  =  0.9814
 
-F1-Score	 = 0.9777
+F1-Score	 = 0.9814
 
 
 4.2 Cross-Testing Results
 
-Model V2 tested  dataset_2
+Model V1 tested  dataset_2
 
 Metric	      Score
 
@@ -102,55 +100,37 @@ Recall	  =  0.9810
 
 F1-Score	 = 0.9810
 
-→ Performs better than Model-1 on dataset 1
-
-→ Indicates improved generalization stability
 
 
 # 5. Observations & Analysis
 
-1. Dataset Influence
-   
-Model V2 appears to have been trained on a dataset with more varied samples or stronger augmentations.
-This might explain why V2 generalizes better.
+Dataset Impact
+Minor variations in performance are likely influenced by dataset distribution, image diversity, and augmentation strategies.
 
-2. Transfer Learning Efficiency
-Both models used ResNet-18:
+Transfer Learning Effectiveness
+Both models leveraged ResNet-18 effectively:
 
-Model V1 → stable baseline
+Model V2 provides a stable and high-performing baseline.
 
-Model V2 → slightly more robust, likely due to:
+Model V1 demonstrates comparable robustness, potentially due to slightly stronger augmentation or training strategies.
 
-Better augmentation
+Cross-Domain Generalization
 
-More diverse dataset
+Both models retain most of their performance on unseen datasets, indicating that the learned features are generalizable.
 
-Longer/optimized training
-
-3. Cross-Domain Performance
-   
-Model V2 maintains almost identical performance on dataset1 as its self-test score.
-
-5. Conclusion from results
-   
-Model V2 has better cross-dataset generalization, suggesting:
-
-It learned more robust features
-
-Or its dataset had better variation
-
-Or training hyperparameters were more optimal
+Slight differences highlight the influence of training data diversity and hyperparameter choices.
 
 # 6. Conclusion
-This collaborative project demonstrates how:
+This collaborative project highlights several key points:
 
-Two similar architectures can behave differently on unseen data
+Two similar CNN architectures can exhibit minor differences in performance due to dataset and training variations.
 
-Dataset diversity and augmentation significantly impact generalization
+Dataset diversity and augmentation play a crucial role in model generalization.
 
-Cross-testing is crucial for evaluating robustness
+Cross-dataset testing provides a valuable measure of robustness beyond traditional self-evaluation.
 
-GitHub workflows (PR, issues, branching) simulate real collaborative ML development.
+Collaborative GitHub workflows allow for efficient team-based model development and evaluation.
+
 
 
 
